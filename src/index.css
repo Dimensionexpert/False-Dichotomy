@@ -90,6 +90,20 @@ body {
   transform: translateX(0);
 }
 
+.sun.stage-6 {
+  left: 95%;
+  bottom: 3%;
+  background: #707088;
+  transform: translateX(0);
+}
+
+.sun.resetting {
+  left: 50%;
+  bottom: -60%;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
 .stage-text {
   position: fixed;
   top: 50%;

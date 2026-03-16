@@ -3,23 +3,41 @@ import { useEffect, useState } from "react";
 function App() {
   const [stage, setStage] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [sunResetting, setSunResetting] = useState(false);
 
   function advance() {
     setVisible(false);
-    setTimeout(() => {
-      setStage((s) => Math.min(6, s + 1));
-      setVisible(true);
-    }, 300);
+    if (stage === 6) {
+      setSunResetting(true);
+      setTimeout(() => {
+        setSunResetting(false);
+        setStage(0);
+        setVisible(true);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setStage((s) => s + 1);
+        setVisible(true);
+      }, 300);
+    }
   }
 
   function retreat() {
     setVisible(false);
-    setTimeout(() => {
-      setStage((s) => Math.max(0, s - 1));
-      setVisible(true);
-    }, 300);
+    if (stage === 0) {
+      setSunResetting(true);
+      setTimeout(() => {
+        setSunResetting(false);
+        setStage(6);
+        setVisible(true);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setStage((s) => s - 1);
+        setVisible(true);
+      }, 300);
+    }
   }
-
   const backgrounds = [
     "#0d0a06", // dawn - warm dark
     "#0d0b07",
@@ -27,6 +45,7 @@ function App() {
     "#0a0a0d", // zawaal - cool dark
     "#09090e",
     "#08080f",
+    "#070710", // dusk - cold dark
     "#070710", // dusk - cold dark
   ];
 
@@ -61,6 +80,10 @@ function App() {
     },
   ];
 
+  useEffect(() => {
+    document.body.style.background = backgrounds[stage];
+  }, [stage]);
+
   return (
     <>
       <div className="story">
@@ -71,7 +94,9 @@ function App() {
           <p key={i}>{line}</p>
         ))}
       </div>
-      <div className={`sun stage-${stage}`}> </div>
+      <div className={`sun stage-${stage} ${sunResetting ? "resetting" : ""}`}>
+        {" "}
+      </div>
       <div className="btn">
         <button className="material-symbols-outlined" onClick={retreat}>
           arrow_back_ios

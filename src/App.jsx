@@ -39,14 +39,23 @@ function App() {
     }
   }
   const backgrounds = [
-    "#0d0a06", // dawn - warm dark
-    "#0d0b07",
-    "#0c0c0a",
-    "#0a0a0d", // zawaal - cool dark
-    "#09090e",
-    "#08080f",
-    "#070710", // dusk - cold dark
-    "#070710", // dusk - cold dark
+    "#fdf6e3", // stage 0 — bright warm morning, almost white
+    "#e8d5b0", // stage 1 — golden hour fading
+    "#c4a882", // stage 2 — afternoon, warmth leaving
+    "#7a6a5a", // stage 3 — zawaal, harsh flat grey
+    "#3a3545", // stage 4 — dusk, blue creeping in
+    "#1a1525", // stage 5 — near night
+    "#050508", // stage 6 — full dark, only the screen
+  ];
+
+  const textColors = [
+    "#1a1208",
+    "#2a1f10",
+    "#3a2a18",
+    "#ffffff",
+    "#ffffff",
+    "#ffffff",
+    "#ffffff",
   ];
 
   const stages = [
@@ -82,6 +91,8 @@ function App() {
 
   useEffect(() => {
     document.body.style.background = backgrounds[stage];
+    document.body.style.color = textColors[stage];
+    document.body.style.transition = "background 1.2s ease, color 1.2s ease";
   }, [stage]);
 
   return (
@@ -94,7 +105,9 @@ function App() {
           <p key={i}>{line}</p>
         ))}
       </div>
-      <div className={`sun stage-${stage} ${sunResetting ? "resetting" : ""}`}>
+      <div
+        className={`sun stage-${stage} ${sunResetting ? "resetting" : ""} text-$(textColors) `}
+      >
         {" "}
       </div>
       <div className="btn">

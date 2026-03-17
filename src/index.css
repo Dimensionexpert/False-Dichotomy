@@ -122,3 +122,7 @@ body {
 .stage-text p {
   margin: 0;
 }
+
+.stage-text {
+  color: inherit;
+}

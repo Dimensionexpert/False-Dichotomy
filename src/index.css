@@ -53,21 +53,21 @@ body {
 
 .sun.stage-1 {
   left: 14%;
-  bottom: 35%;
+  bottom: 45%;
   background: #f0a020;
   transform: translateX(0);
 }
 
 .sun.stage-2 {
   left: 32%;
-  bottom: 58%;
+  bottom: 65%;
   background: #d4b060;
   transform: translateX(0);
 }
 .sun.stage-3 {
   left: 50%;
   transform: translateX(-50%);
-  bottom: 67%;
+  bottom: 80%;
   background: #c8b89a;
 }
 .sun.stage-4 {
@@ -99,7 +99,7 @@ body {
 
 .sun.resetting {
   left: 50%;
-  bottom: -60%;
+  bottom: -80%;
   opacity: 0;
   transition: all 0.8s ease;
 }
